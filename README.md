@@ -81,7 +81,7 @@ Obviously it is not possible to have the country precision enabled while retriev
 
 It is possible to set a timeout for all requests. By default it is one second, but you can easily set a different value by passing a timeout option:
 
-  GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5}) 
+    GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5}) 
 
 ## Getting it
 
