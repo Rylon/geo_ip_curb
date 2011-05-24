@@ -77,11 +77,17 @@ returns:
 
 Obviously it is not possible to have the country precision enabled while retrieving the timezone information.
 
+### Timeout
+
+It is possible to set a timeout for all requests. By default it is one second, but you can easily set a different value by passing a timeout option:
+
+  GeoIp.geolocation('209.85.227.104', {:timeout => 5}) 
+
 ## Getting it
 
 GeoIp can be installed as a Ruby Gem:
 
-    gem install geo_ip
+    gem install geo_ip_curb
 
 ### Rails
 
@@ -89,7 +95,7 @@ GeoIp can be installed as a Ruby Gem:
 
 In your Gemfile:
 
-    gem 'geo_ip', '~> 0.3.0'
+    gem 'geo_ip_curb', '~> 0.3.2'
 
 Then create an initializer `config/initializers/geo_ip` (or name it whatever you want):
 
@@ -99,7 +105,7 @@ Then create an initializer `config/initializers/geo_ip` (or name it whatever you
 
 In your `config/environment.rb`:
 
-    config.gem 'geo_ip', :version => '~> 0.3.0'
+    config.gem 'geo_ip', :version => '~> 0.3.2'
 
 Then create an initializer `config/initializers/geo_ip` (or name it whatever you want):
 
@@ -123,7 +129,7 @@ If you get a LoadError, you should run the tests with:
 
 ## Bugs
 
-Please report them on the [Github issue tracker](https://github.com/jeroenj/geo_ip/issues)
+Please report them on the [Github issue tracker](https://github.com/rylon/geo_ip_curb/issues)
 for this project.
 
 If you have a bug to report, please include the following information:

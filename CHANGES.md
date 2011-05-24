@@ -5,7 +5,7 @@
 * Handle service failures gracefully.
 * Added a test to ensure error handling of service failures works.
 
-## 0.3.1 (in development)
+## 0.3.1
 
 * Switches to bundler for gem deployment
 * Uses Rspec 2.x from now on

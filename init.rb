@@ -1,1 +1,1 @@
-require 'geo_ip'
+require 'geo_ip_curb'

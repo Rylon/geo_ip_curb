@@ -6,10 +6,9 @@ Gem::Specification.new do |s|
   s.version     = '0.3.2'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Ryan Conway', 'Jeroen Jacobs']
-  s.email       = 'gems@jeroenj.be'
-  s.homepage    = 'http://jeroenj.be'
   s.summary     = 'Retreive the geolocation of an IP address based on the ipinfodb.com webservice.
-                  It is the same as Jeroen Jacobs\' gem, but uses the Curb gem, rather than Net::HTTP.'
+                  It is the same as Jeroen Jacobs\' gem, but uses the Curb gem, rather than Net::HTTP
+                  in order to avoid issues with DNS resolution ignoring timeout settings.'
   s.description = 'A call to the ipinfodb.com will be done to retreive the geolocation based on the IP address. No need to include a database file in the application.'
 
   s.files         = Dir['README.rdoc', 'CHANGES', 'LICENSE', 'lib/**/*']
