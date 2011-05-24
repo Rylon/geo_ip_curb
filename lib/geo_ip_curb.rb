@@ -1,13 +1,13 @@
 require 'json'
 require 'curb'
 
-class GeoIp
+class GeoIpCurb
   SERVICE_URL     = "http://api.ipinfodb.com/v2"
   CITY_API        = "ip_query.php"
   COUNTRY_API     = "ip_query_country.php"
   IPV4_REGEXP     = /\A(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)(?:\.(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)){3}\z/
   TIMEOUT         = 1
-  ERROR_PREFIX    = "GeoIP service error"
+  ERROR_PREFIX    = "GeoIpCurb service error"
 
   @@api_key = nil
 
@@ -26,13 +26,13 @@ class GeoIp
   # * +timezone+: can either be +false+ (default) or +true+
   #
   # ==== Example:
-  #   GeoIp.geolocation('209.85.227.104', {:precision => :city, :timezone => true})
+  #   GeoIpCurb.geolocation('209.85.227.104', {:precision => :city, :timezone => true})
   def self.geolocation(ip, options={})
     @precision = options[:precision] || :city
     @timezone  = options[:timezone]  || false
     @timeout   = options[:timeout]   || TIMEOUT
     
-    raise "API key must be set first: GeoIp.api_key = 'YOURKEY'" if self.api_key.nil?
+    raise "API key must be set first: GeoIpCurb.api_key = 'YOURKEY'" if self.api_key.nil?
     raise "Invalid IP address" unless ip.to_s =~ IPV4_REGEXP
     raise "Invalid precision"  unless [:country, :city].include?(@precision)
     raise "Invalid timezone"   unless [true, false].include?(@timezone)

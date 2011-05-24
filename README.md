@@ -1,4 +1,4 @@
-# GeoIp
+# GeoIpCurb
 
 Retreive the geolocation of an IP address based on the [ipinfodb.com](http://ipinfodb.com/) webservice.
 
@@ -9,17 +9,17 @@ Consider making a donation to [ipinfodb.com](http://ipinfodb.com/) at [http://ip
 ## Usage
 
 ### Set API key
-    GeoIp.api_key = "YOUR_API_KEY"
+    GeoIpCurb.api_key = "YOUR_API_KEY"
 
 This must be done before making the geolocation call.
 
 ### Retrieve geolocation
-    GeoIp.geolocation(ip_address)
+    GeoIpCurb.geolocation(ip_address)
 
 ### Example
 
     # 209.85.227.104 = google.be (US)
-    GeoIp.geolocation('209.85.227.104')
+    GeoIpCurb.geolocation('209.85.227.104')
 
 returns:
 
@@ -40,7 +40,7 @@ returns:
 
 There is an option to only retreive the country information and thus excluding the city details. This results in a faster response from the service since less queries need to be done.
 
-    GeoIp.geolocation('209.85.227.104', {:precision => :country})
+    GeoIpCurb.geolocation('209.85.227.104', {:precision => :country})
 
 returns:
 
@@ -55,7 +55,7 @@ returns:
 
 There is an option now to retrieve optional timezone information too:
 
-  GeoIp.geolocation('209.85.227.104', {:timezone => true})
+  GeoIpCurb.geolocation('209.85.227.104', {:timezone => true})
 
 returns:
 
@@ -81,11 +81,11 @@ Obviously it is not possible to have the country precision enabled while retriev
 
 It is possible to set a timeout for all requests. By default it is one second, but you can easily set a different value by passing a timeout option:
 
-  GeoIp.geolocation('209.85.227.104', {:timeout => 5}) 
+  GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5}) 
 
 ## Getting it
 
-GeoIp can be installed as a Ruby Gem:
+GeoIpCurb can be installed as a Ruby Gem:
 
     gem install geo_ip_curb
 
@@ -99,7 +99,7 @@ In your Gemfile:
 
 Then create an initializer `config/initializers/geo_ip` (or name it whatever you want):
 
-    GeoIp.api_key = "YOUR_API_KEY"
+    GeoIpCurb.api_key = "YOUR_API_KEY"
 
 #### Pre-bundler (Rails 2.3.x or older)
 
@@ -109,7 +109,7 @@ In your `config/environment.rb`:
 
 Then create an initializer `config/initializers/geo_ip` (or name it whatever you want):
 
-    GeoIp.api_key = "YOUR_API_KEY"
+    GeoIpCurb.api_key = "YOUR_API_KEY"
 
 ## Testing
 

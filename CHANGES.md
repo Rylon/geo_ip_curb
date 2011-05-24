@@ -1,5 +1,6 @@
 ## 0.3.2
 
+* Renamed gem to GeoIpCurb to allow release alongside the existing GeoIp gem after agreeing this with the original author.
 * Replaced Net::HTTP with Curb which handles DNS failure timeouts better.
 * Added a timeout option to be passed when calling geolocation.
 * Handle service failures gracefully.
@@ -14,14 +15,14 @@
 
 * Added support for API key requirement (Thanks to seanconaty and luigi)
 * Explicit gem dependency for json and removed rubygems requirement (idris) (http://tomayko.com/writings/require-rubygems-antipattern)
-* Removed deprecated GeoIp#remote_geolocation method
+* Removed deprecated GeoIpCurb#remote_geolocation method
 
 ## 0.2.0
 
 * Added support for timezone information. Use the optional {:timezone => true|false} option
 * Added support for country lookup. This will result in a faster reply since less queries need
   to be done at ipinfodb's side. Use the optional {:precision => :city|:country} option
-* API change: GeoIp.remote_geolocation(ip) is deprecated in favor of GeoIp.geolocation(ip)
+* API change: GeoIpCurb.remote_geolocation(ip) is deprecated in favor of GeoIpCurb.geolocation(ip)
 
 ## 0.1.1
 
