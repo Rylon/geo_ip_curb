@@ -142,4 +142,4 @@ Do not forget to include tests.
 
 ## Copyright
 
-Copyright (c) 2010-2011 Jeroen Jacobs. See LICENSE for details.
+Copyright (c) 2010-2011 Ryan Conway, Jeroen Jacobs. See LICENSE for details.
