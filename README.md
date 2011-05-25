@@ -55,7 +55,7 @@ returns:
 
 ### Timeout
 
-It is possible to set a timeout for all requests. By default it is one second, but you can easily set a different value by passing a timeout option:
+It is possible to set a timeout for all requests. By default it is ten seconds, but you can easily set a different value by passing a timeout option:
 
     GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5}) 
 
