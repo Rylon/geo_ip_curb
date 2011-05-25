@@ -1,3 +1,15 @@
+## 0.4.0
+
+* Changed the API used from v2 to v3.
+* Dropped support for requesting a timezone as the v3 API does not support this.
+  This also means the attributes timezone_name, utc_offset and dst are no longer
+  available.
+* Modified the tests to support the new API.
+* Any service errors now result in the status attribute being set to ERROR with
+  status_message containing the error message.
+* Switched from Rspec to Test::Unit.
+* Added a rake task to run all unit tests.
+
 ## 0.3.2
 
 * Renamed gem to GeoIpCurb to allow release alongside the existing GeoIp gem after agreeing this with the original author.

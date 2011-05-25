@@ -1,6 +1,6 @@
 # GeoIpCurb
 
-Retreive the geolocation of an IP address based on the [ipinfodb.com](http://ipinfodb.com/) webservice.
+Retrieve the geolocation of an IP address based on the [ipinfodb.com](http://ipinfodb.com/) webservice using Curb.
 
 As of 8th November 2010, the service is asking that all users [register](http://ipinfodb.com/register.php) for an API key.
 
@@ -24,58 +24,34 @@ This must be done before making the geolocation call.
 returns:
 
     {
-      :status           =>"OK",
-      :ip               =>"209.85.227.104"
-      :country_code     =>"US",
-      :country_name     =>"United States",
-      :region_code      =>"06",
-      :region_name      =>"California",
-      :city             =>"Mountain View",
-      :zip_postal_code  =>"94043",
-      :latitude         =>"37.4192",
-      :longitude        =>"-122.057"
+      :status           =>"OK", 
+      :status_message   =>"", 
+      :country_code     =>"US", 
+      :ip               =>"209.85.227.104", 
+      :country_name     =>"UNITED STATES"
     }
 
-### Country only
+### Additional details
 
-There is an option to only retreive the country information and thus excluding the city details. This results in a faster response from the service since less queries need to be done.
+There is an option to only retrieve additional information about the city and the timezone. This results in a slower response from the service since more queries need to be done.
 
-    GeoIpCurb.geolocation('209.85.227.104', {:precision => :country})
+    GeoIpCurb.geolocation('209.85.227.104', {:precision => :city})
 
 returns:
 
     {
-      :status           => "OK",
-      :ip               => "209.85.227.104"
-      :country_code     => "US",
-      :country_name     => "United States"
+      :utc_offset       =>"-08:00", 
+      :status           =>"OK", 
+      :zip_postal_code  =>"91754", 
+      :latitude         =>"34.0505", 
+      :status_message   =>"", 
+      :longitude        =>"-118.13", 
+      :country_code     =>"US", 
+      :ip               =>"209.85.227.104", 
+      :city             =>"MONTEREY PARK", 
+      :country_name     =>"UNITED STATES", 
+      :region_name      =>"CALIFORNIA"
     }
-
-### Timezone information
-
-There is an option now to retrieve optional timezone information too:
-
-  GeoIpCurb.geolocation('209.85.227.104', {:timezone => true})
-
-returns:
-
-    {
-      :status           =>"OK",
-      :ip               =>"209.85.227.104"
-      :country_code     =>"US",
-      :country_name     =>"United States",
-      :region_code      =>"06",
-      :region_name      =>"California",
-      :city             =>"Mountain View",
-      :zip_postal_code  =>"94043",
-      :latitude         =>"37.4192",
-      :longitude        =>"-122.057"
-      :timezone_name    =>"America/Los_Angeles",
-      :utc_offset       =>-25200,
-      :dst?             =>true
-    }
-
-Obviously it is not possible to have the country precision enabled while retrieving the timezone information.
 
 ### Timeout
 
@@ -113,16 +89,15 @@ Then create an initializer `config/initializers/geo_ip` (or name it whatever you
 
 ## Testing
 
-Set up your API key first for the test suite by creating a spec/api.yml file. Follow the example in spec/api.yml.example. Then run the tests with:
+Set up your API key first for the test suite by creating a tests/api.yml file. Follow the example in tests/api.yml.example. Then run the tests with:
 
-    ruby spec/geo_ip_spec.rb
-
-If you get a LoadError, you should run the tests with:
-
-    ruby -rubygems spec/geo_ip_spec.rb
+    rake test:units
 
 ## Contributors
 
+This project was originally based on the GeoIP gem written by [jeroenj](https://github.com/jeroenj/geo_ip).
+
+* [jeroenj](https://github.com/jeroenj)
 * [seanconaty](https://github.com/seanconaty)
 * [luigi](https://github.com/luigi)
 * [idris](https://github.com/idris)
@@ -134,7 +109,7 @@ for this project.
 
 If you have a bug to report, please include the following information:
 
-* **Version information for bierdopje, Rails and Ruby.**
+* **Version information for your environment, for example, Rails, Ruby and RubyGems.**
 * Stack trace and error message.
 
 You may also fork this project on Github and create a pull request.
@@ -142,4 +117,4 @@ Do not forget to include tests.
 
 ## Copyright
 
-Copyright (c) 2010-2011 Ryan Conway, Jeroen Jacobs. See LICENSE for details.
+Copyright (c) 2010-2011 Ryan Conway. See LICENSE for details.
