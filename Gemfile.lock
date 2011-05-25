@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    geo_ip_curb (0.3.2)
+    geo_ip_curb (0.4.0)
       curb (~> 0.7.15)
       json (~> 1.4.6)
 
@@ -9,17 +9,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     curb (0.7.15)
-    diff-lcs (1.1.2)
     json (1.4.6)
     mocha (0.9.12)
-    rspec (2.5.0)
-      rspec-core (~> 2.5.0)
-      rspec-expectations (~> 2.5.0)
-      rspec-mocks (~> 2.5.0)
-    rspec-core (2.5.1)
-    rspec-expectations (2.5.0)
-      diff-lcs (~> 1.1.2)
-    rspec-mocks (2.5.0)
 
 PLATFORMS
   ruby
@@ -27,4 +18,3 @@ PLATFORMS
 DEPENDENCIES
   geo_ip_curb!
   mocha (~> 0.9.12)
-  rspec (~> 2.5)

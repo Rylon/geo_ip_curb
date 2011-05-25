@@ -3,20 +3,17 @@ $:.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'geo_ip_curb'
-  s.version     = '0.3.2'
+  s.version     = '0.4.0'
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Ryan Conway', 'Jeroen Jacobs']
-  s.summary     = 'Retreive the geolocation of an IP address based on the ipinfodb.com webservice.
-                  It is the same as Jeroen Jacobs\' gem, but uses the Curb gem, rather than Net::HTTP
-                  in order to avoid issues with DNS resolution ignoring timeout settings.'
-  s.description = 'A call to the ipinfodb.com will be done to retreive the geolocation based on the IP address. No need to include a database file in the application.'
+  s.authors     = ['Ryan Conway']
+  s.summary     = 'Retrieve the geolocation of an IP address based on the ipinfodb.com v3 API.'
+  s.description = 'A call to the v3 API from ipinfodb.com will be done to retrieve the geolocation based on the IP address. No need to include a database file in the application.'
 
   s.files         = Dir['README.rdoc', 'CHANGES', 'LICENSE', 'lib/**/*']
-  s.test_files    = Dir.glob('spec/**/*')
+  s.test_files    = Dir.glob('test/**/*')
   s.require_paths = ['lib']
 
   s.add_dependency 'json', '~> 1.4.6'
   s.add_dependency 'curb', '~> 0.7.15'
-  s.add_development_dependency 'rspec', '~> 2.5'
   s.add_development_dependency 'mocha', '~> 0.9.12'  
 end
