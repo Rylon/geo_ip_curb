@@ -1,5 +1,3 @@
-# require 'rubygems'
-
 require 'json'
 require 'curb'
 
@@ -74,9 +72,3 @@ class GeoIpCurb
     location
   end
 end
-
-# GeoIpCurb.api_key = "7c1ff3a191f02976f5f63ebe134d8d08551cda9a5e7ed701bbf2ee2846c25789"
-# geo_ip_result = GeoIpCurb.geolocation("81.19.48.130", {:precision => :city, :timeout => 5})
-# geo_ip_result = GeoIpCurb.geolocation("209.85.227.104", {:precision => :city, :timeout => 5})
-# 
-# puts geo_ip_result.inspect
