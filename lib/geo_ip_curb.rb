@@ -1,13 +1,15 @@
+# require 'rubygems'
+
 require 'json'
 require 'curb'
 
 class GeoIpCurb
-  SERVICE_URL     = "http://api.ipinfodb.com/v2"
-  CITY_API        = "ip_query.php"
-  COUNTRY_API     = "ip_query_country.php"
+  SERVICE_URL     = "http://api.ipinfodb.com/v3"
+  CITY_API        = "ip-city"
+  COUNTRY_API     = "ip-country"
   IPV4_REGEXP     = /\A(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)(?:\.(?:25[0-5]|(?:2[0-4]|1\d|[1-9])?\d)){3}\z/
-  TIMEOUT         = 1
-  ERROR_PREFIX    = "GeoIpCurb service error"
+  TIMEOUT         = 10
+  ERROR_PREFIX    = "api.ipinfodb.com service error"
 
   @@api_key = nil
 
@@ -28,17 +30,14 @@ class GeoIpCurb
   # ==== Example:
   #   GeoIpCurb.geolocation('209.85.227.104', {:precision => :city, :timezone => true})
   def self.geolocation(ip, options={})
-    @precision = options[:precision] || :city
-    @timezone  = options[:timezone]  || false
+    @precision = options[:precision] || :country
     @timeout   = options[:timeout]   || TIMEOUT
     
     raise "API key must be set first: GeoIpCurb.api_key = 'YOURKEY'" if self.api_key.nil?
     raise "Invalid IP address" unless ip.to_s =~ IPV4_REGEXP
     raise "Invalid precision"  unless [:country, :city].include?(@precision)
-    raise "Invalid timezone"   unless [true, false].include?(@timezone)
    
-    uri = "#{SERVICE_URL}/#{@country ? COUNTRY_API : CITY_API}?key=#{self.api_key}&ip=#{ip}&output=json&timezone=#{@timezone}"
-    
+    uri = "#{SERVICE_URL}/#{@precision==:country ? COUNTRY_API : CITY_API}/?key=#{self.api_key}&ip=#{ip}&format=json"
     convert_keys send_request(uri)
   end
 
@@ -57,24 +56,27 @@ class GeoIpCurb
   
   def self.convert_keys(hash)
     location = {}
-    location[:ip]                 = hash["Ip"]
-    location[:status]             = hash["Status"]
-    location[:country_code]       = hash["CountryCode"]
-    location[:country_name]       = hash["CountryName"]
+    location[:ip]                 = hash["ipAddress"]
+    location[:status]             = hash["statusCode"]
+    location[:status_message]     = hash["statusMessage"]
+    location[:country_code]       = hash["countryCode"]
+    location[:country_name]       = hash["countryName"]
     if @precision == :city
-      location[:region_code]      = hash["RegionCode"]
-      location[:region_name]      = hash["RegionName"]
-      location[:city]             = hash["City"]
-      location[:zip_postal_code]  = hash["ZipPostalCode"]
-      location[:latitude]         = hash["Latitude"]
-      location[:longitude]        = hash["Longitude"]
-      if @timezone
-        location[:timezone_name]  = hash["TimezoneName"]
-        location[:utc_offset]     = hash["Gmtoffset"].to_i
-        location[:dst?]           = hash["Isdst"] ? true : false
-      end
+      location[:region_name]      = hash["regionName"]
+      location[:city]             = hash["cityName"]
+      location[:zip_postal_code]  = hash["zipCode"]
+      location[:latitude]         = hash["latitude"]
+      location[:longitude]        = hash["longitude"]
+      location[:utc_offset]       = hash["timeZone"]
     end
-    location[:error]              = hash[:error_msg] if hash[:error_msg]
+    location[:status]             = "ERROR" if hash[:error_msg]
+    location[:status_message]     = hash[:error_msg] if hash[:error_msg]
     location
   end
 end
+
+# GeoIpCurb.api_key = "7c1ff3a191f02976f5f63ebe134d8d08551cda9a5e7ed701bbf2ee2846c25789"
+# geo_ip_result = GeoIpCurb.geolocation("81.19.48.130", {:precision => :city, :timeout => 5})
+# geo_ip_result = GeoIpCurb.geolocation("209.85.227.104", {:precision => :city, :timeout => 5})
+# 
+# puts geo_ip_result.inspect
