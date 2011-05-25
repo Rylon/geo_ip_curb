@@ -1,6 +1,6 @@
 # GeoIpCurb
 
-Retrieve the geolocation of an IP address based on the [ipinfodb.com](http://ipinfodb.com/) webservice using Curb.
+Retrieve the geolocation of an IP address using the [ipinfodb.com](http://ipinfodb.com/) v3 API service using Curb.
 
 As of 8th November 2010, the service is asking that all users [register](http://ipinfodb.com/register.php) for an API key.
 
