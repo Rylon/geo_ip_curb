@@ -59,6 +59,38 @@ It is possible to set a timeout for all requests. By default it is ten seconds, 
 
     GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5}) 
 
+### Reserved / Private / Local IPs
+
+Passing reserved, private or local IPs, such as 127.0.0.1 will return '-' for all location data, for example:
+
+    GeoIpCurb.geolocation('127.0.0.1')
+
+returns:
+
+    {
+      :status_message   =>"", 
+      :status           =>"OK",
+      :ip               =>"127.0.0.1",
+      :country_code     =>"-",
+      :country_name     =>"-",
+    }
+
+### Errors
+
+Any errors received when calling the API will result in the :status and :status_message attributes being set with relevant information, for example, in the case of service failure:
+
+    GeoIpCurb.geolocation('209.85.227.104')
+
+returns:
+
+    {
+      :status_message   =>"api.ipinfodb.com service error: \"Couldn't connect to server\".", 
+      :status           =>"ERROR",
+      :ip               =>nil,
+      :country_code     =>nil,
+      :country_name     =>nil,
+    }
+
 ## Getting it
 
 GeoIpCurb can be installed as a Ruby Gem:
