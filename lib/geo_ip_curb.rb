@@ -44,8 +44,6 @@ class GeoIpCurb
     else
       uri = "#{SERVICE_URL}/#{@precision==:country ? COUNTRY_API : CITY_API}/?key=#{self.api_key}&ip=#{ip}&format=json"
     end
-    
-    puts uri
 
     convert_keys send_request(uri)
   end
