@@ -57,7 +57,7 @@ returns:
 
 It is possible to set a timeout for all requests. By default it is ten seconds, but you can easily set a different value by passing a timeout option:
 
-    GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5}) 
+    GeoIpCurb.geolocation('209.85.227.104', {:timeout => 5})
 
 ### Reserved / Private / Local IPs
 
@@ -74,6 +74,14 @@ returns:
       :country_code     =>"-",
       :country_name     =>"-",
     }
+
+### Change the Service URL
+
+The service URL is hardcoded to the v3 API over at ipinfodb.com. You may need to change this, should this API change, or if you want to send requests through a different URL, such as through your own systems, to perform additional caching.
+
+    GeoIpCurb.geolocation('209.85.227.104', {:service_url => "http://yoursite.com/path/to/api?key=APIKEYPLACEHOLDER&ip=IPPLACEHOLDER"})
+    
+The two placeholders - 'APIKEYPLACEHOLDER' and 'IPPLACEHOLDER' - will be replaced accordingly when building the request.
 
 ### Errors
 

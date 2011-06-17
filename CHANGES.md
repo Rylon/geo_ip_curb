@@ -1,3 +1,8 @@
+## 0.4.1
+
+* Added an option to override the service URL, for if ipinfodb.com ever change it, or if you want to route
+  requests elsewhere, for example proxying through your own system to perform additional caching.
+
 ## 0.4.0
 
 * Changed the API used from v2 to v3.
