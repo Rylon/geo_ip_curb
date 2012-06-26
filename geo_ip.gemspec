@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.test_files    = Dir.glob('test/**/*')
   s.require_paths = ['lib']
 
-  s.add_dependency 'json', '~> 1.4.6'
-  s.add_dependency 'curb', '~> 0.7.15'
+  s.add_dependency 'json', '> 1.4.6'
+  s.add_dependency 'curb', '> 0.7.15'
   s.add_development_dependency 'mocha', '~> 0.9.12'  
 end
