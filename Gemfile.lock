@@ -2,14 +2,14 @@ PATH
   remote: .
   specs:
     geo_ip_curb (0.4.1)
-      curb (~> 0.7.15)
-      json (~> 1.4.6)
+      curb (> 0.7.15)
+      json (> 1.4.6)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    curb (0.7.15)
-    json (1.4.6)
+    curb (0.8.0)
+    json (1.7.3)
     mocha (0.9.12)
 
 PLATFORMS
