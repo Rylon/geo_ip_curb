@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    geo_ip_curb (0.4.1)
+    geo_ip_curb (0.4.2)
       curb (> 0.7.15)
       json (> 1.4.6)
 

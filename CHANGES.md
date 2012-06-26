@@ -1,3 +1,7 @@
+## 0.4.2
+
+* Previously JSON and Curb dependency versions were fixed at ~>1.4.6 and ~>0.7.15 respectively. This releases sets those as the minimum version to prevent conflicts with newer versions.
+
 ## 0.4.1
 
 * Added an option to override the service URL, for if ipinfodb.com ever change it, or if you want to route

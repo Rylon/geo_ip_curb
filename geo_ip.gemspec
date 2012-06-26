@@ -3,7 +3,7 @@ $:.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'geo_ip_curb'
-  s.version     = '0.4.1'
+  s.version     = '0.4.2'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Ryan Conway']
   s.summary     = 'Retrieve the geolocation of an IP address using the the ipinfodb.com v3 API service using Curb.'
